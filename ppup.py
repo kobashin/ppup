@@ -35,7 +35,7 @@ unzip it and put the driver on the same folder as this program.
 
 try:
     options = Options()
-    options.add_argument("--user-data-dir=C:/Users/shin5/OneDrive/ドキュメント/PythonScripts/web/unique_profile")
+    options.add_argument("")    # add arguments later
     service = Service('msedgedriver.exe')
     driver = webdriver.Edge(service=service, options=options)
 
@@ -68,30 +68,23 @@ time.sleep(1)
 
 # fill email and password
 email = driver.find_element(By.NAME, 'user[email]')
-email.send_keys('shi.kobayashi@scsk.jp')
+email.send_keys('')     # add arguments later
 password = driver.find_element(By.NAME, 'user[password]')
-password.send_keys('BlueBlack028')
+password.send_keys('')  # add arguments later
 
 # click to commit.
 # loginButton = driver.find_element(By.NAME, 'commit')
 # loginButton.click()
 
 # wait until reCAPTCHA is solved manually.
-print('Please solve reCAPTCHA manually within 10 seconds.')
+print('Please solve reCAPTCHA manually within 30 seconds.')
 time.sleep(30)
 
 # get current year and month dynamically
 tgtYear = datetime.now().year
 tgtMonth = datetime.now().month - 1
 
-# put previous month to tgtMonth if the day is between 1st and 5th.
-'''
-if datetime.now().day < 15:
-    tgtMonth -= 1
-'''
-
 # get the last day of the month
-# startDay = 1
 startDay = 1
 endDay = funcs.getLastDay(tgtYear, tgtMonth)
 
@@ -103,7 +96,6 @@ for day in range(startDay, endDay + 1):
     driver.get('https://pepup.life/scsk_mileage_campaigns/' + today)
     time.sleep(1)
     inputs = driver.find_elements(By.TAG_NAME, 'input')
-    # inputs = driver.find_elements_by_tag_name('input')
 
     # if inputs are not found, terminate the program.
     if len(inputs) == 0:
@@ -120,10 +112,8 @@ for day in range(startDay, endDay + 1):
 
             # num of walks
             if isWeekend:
-                # tmpInput.send_keys(15000)
                 walks = 15000
             else:
-                # tmpInput.send_keys(8000)
                 walks = 8000
             # add random number to the walks
             walks += funcs.getRandomInt(0, 1000)
@@ -137,7 +127,6 @@ for day in range(startDay, endDay + 1):
             else:
                 tmpInput.send_keys(6)
         # other items
-        # elif tmpInput.aria_role == 'checkbox':
         else:
             if not tmpInput.is_selected():
                 tmpInput.click()
