@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 # .envファイルから環境変数を読み込み
 load_dotenv()
 
+
 def get_login_credentials():
     """
     環境変数からログイン情報を取得
@@ -14,6 +15,8 @@ def get_login_credentials():
     password = os.getenv('PEPUP_PASSWORD')
     
     if not email or not password:
-        raise ValueError("PEPUP_EMAIL and PEPUP_PASSWORD must be set in environment variables or .env file")
-    
+        raise ValueError(
+            "Email and Password must be set in .env file"
+        )
+
     return email, password

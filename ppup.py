@@ -24,10 +24,12 @@ import config
 
 # Begin : Microsoft Edge session.
 '''
-If you see this message below when running this program, replace the webdriver.
-'This version of Microsoft Edge WebDriver only supports Microsoft Edge version 138'
+If you see the message below when running this program, replace the webdriver.
+
+'This version of Microsoft Edge WebDriver only supports Microsoft Edge version xxx'
+
 Open the link above and download zip.
-unzip it and put the driver on the same folder as this program.
+Unzip it and put the driver on the same folder as this program.
 '''
 
 # if a version of the driver matches that of browser, get a web driver
