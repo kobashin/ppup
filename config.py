@@ -13,7 +13,7 @@ def get_login_credentials():
     """
     email = os.getenv('PEPUP_EMAIL')
     password = os.getenv('PEPUP_PASSWORD')
-    
+
     if not email or not password:
         raise ValueError(
             "Email and Password must be set in .env file"
