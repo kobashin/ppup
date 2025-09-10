@@ -13,7 +13,6 @@
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.edge.options import Options
 from selenium.webdriver.edge.service import Service
 import time
 from datetime import datetime
@@ -21,6 +20,7 @@ import re
 
 # from funcs import *
 import funcs
+import config
 
 # Begin : Microsoft Edge session.
 '''
@@ -34,10 +34,8 @@ unzip it and put the driver on the same folder as this program.
 # start try block
 
 try:
-    options = Options()
-    options.add_argument("")    # add arguments later
     service = Service('msedgedriver.exe')
-    driver = webdriver.Edge(service=service, options=options)
+    driver = webdriver.Edge(service=service)
 
 # catch the exception
 except selenium.common.exceptions.SessionNotCreatedException as e:
@@ -67,10 +65,11 @@ driver.get('https://pepup.life/users/sign_in')
 time.sleep(1)
 
 # fill email and password
+email_address, password_value = config.get_login_credentials()
 email = driver.find_element(By.NAME, 'user[email]')
-email.send_keys('')     # add arguments later
+email.send_keys(email_address)
 password = driver.find_element(By.NAME, 'user[password]')
-password.send_keys('')  # add arguments later
+password.send_keys(password_value)
 
 # click to commit.
 # loginButton = driver.find_element(By.NAME, 'commit')
